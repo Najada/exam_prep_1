@@ -1,0 +1,20 @@
+* {
+    font-family: 'Hermit', monospace;
+}
+#log-reg {
+    display: flex;
+    justify-content: space-between;
+}
+#log-reg > section {
+    width: 50%;
+    margin: 0 2em;
+}
+ul.messages {
+    list-style: none;
+}
+li.error {
+    color: firebrick;
+}
+li.success {
+    color: forestgreen;
+}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hello, {{ user.first_name }}!</h1>
+
+<h4 class="mt-5">Your trip schedules</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Travel Start Date</th>
+            <th scope="col">Travel Start Date</th>
+            <th scope="col">Plan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trip in user.trips.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.start_date}}</td>
+            <td>{{trip.end_date}}</td>
+            <td>{{trip.description}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h4 class="mt-5">Other users tavels plans</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Travel Start Date</th>
+            <th scope="col">Travel Start Date</th>
+            <th scope="col">Plan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trip in trips %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{trip.user.first_name}}</td>
+            <td><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.start_date}}</td>
+            <td>{{trip.end_date}}</td>
+            <td><a href="/travels/{{trip.id}}/join">Join</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/travels/add" class="btn btn-primary mt-5" style="float:right">Add a travel plan</a>
+{% endblock %}
